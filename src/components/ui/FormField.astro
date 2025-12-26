@@ -1,0 +1,65 @@
+---
+export interface Props {
+  label: string;
+  type?: 'text' | 'email' | 'tel' | 'password' | 'textarea' | 'select';
+  name: string;
+  id?: string;
+  placeholder?: string;
+  required?: boolean;
+  options?: { value: string; label: string }[];
+  rows?: number;
+  class?: string;
+}
+
+const {
+  label,
+  type = 'text',
+  name,
+  id = name,
+  placeholder,
+  required = false,
+  options,
+  rows = 4,
+  class: className = ''
+} = Astro.props;
+
+const inputClasses = 'w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors duration-200';
+---
+
+<div class={`space-y-2 ${className}`}>
+  <label for={id} class="block text-sm font-semibold text-gray-700">
+    {label}
+    {required && <span class="text-red-500 ml-1">*</span>}
+  </label>
+  
+  {type === 'textarea' ? (
+    <textarea
+      id={id}
+      name={name}
+      rows={rows}
+      placeholder={placeholder}
+      required={required}
+      class={inputClasses}
+    ></textarea>
+  ) : type === 'select' ? (
+    <select
+      id={id}
+      name={name}
+      required={required}
+      class={inputClasses}
+    >
+      {options?.map(option => (
+        <option value={option.value}>{option.label}</option>
+      ))}
+    </select>
+  ) : (
+    <input
+      type={type}
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      class={inputClasses}
+    />
+  )}
+</div>

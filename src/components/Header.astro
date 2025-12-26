@@ -1,0 +1,66 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<style>
+  .jersey-20-charted-regular {
+    font-family: 'Jersey 20 Charted', serif;
+  }
+  .jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+</style>
+
+<header class="top-0 w-full z-50 mb-2">
+  <nav class="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+    <div class="border-b-2 border-black">
+      <div class="flex flex-col items-start py-4">
+        <!-- Site Title -->
+        <a href="/" class="text-4xl jersey-20-charted-regular mb-4">
+          Name
+        </a>
+        
+        <!-- Navigation -->
+        <ul class="flex items-center space-x-8">
+          <li>
+            <a href="/" class={`text-xl jersey-10-regular relative py-2 text-gray-700 hover:text-primary-600 transition-colors ${
+              currentPath === '/' ? 'text-primary-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-600' : ''
+            }`}>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/" class={`text-xl jersey-10-regular relative py-2 text-gray-700 hover:text-primary-600 transition-colors ${
+              currentPath === '/' ? 'text-primary-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-600' : ''
+            }`}>
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="/" class={`text-xl jersey-10-regular relative py-2 text-gray-700 hover:text-primary-600 transition-colors ${
+              currentPath === '/' ? 'text-primary-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-600' : ''
+            }`}>
+              Photography
+            </a>
+          </li>
+          <li>
+            <a href="/" class={`text-xl jersey-10-regular relative py-2 text-gray-700 hover:text-primary-600 transition-colors ${
+              currentPath === '/' ? 'text-primary-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-600' : ''
+            }`}>
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/" class={`text-xl jersey-10-regular not-only-of-type:relative py-2 text-gray-700 hover:text-primary-600 transition-colors ${
+              currentPath === '/' ? 'text-primary-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-600' : ''
+            }`}>
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

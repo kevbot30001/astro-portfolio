@@ -1,0 +1,62 @@
+---
+// Moving banner component with scrolling text
+export interface Props {
+  text?: string;
+  speed?: number;
+  bgColor?: string;
+  textColor?: string;
+}
+
+const { 
+  text = "Welcome to my portfolio • Currently available for new projects • Let's create something amazing together • ", 
+  speed = 20,
+  bgColor = "bg-black",
+  textColor = "text-white"
+} = Astro.props;
+---
+
+<div class={`moving-banner-container ${bgColor} ${textColor} py-2 overflow-hidden whitespace-nowrap`}>
+  <div class="moving-banner-content jersey-10-regular text-sm tracking-wider">
+    <span class="inline-block">{text}</span>
+    <span class="inline-block">{text}</span>
+    <span class="inline-block">{text}</span>
+  </div>
+</div>
+
+<style>
+  .jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .moving-banner-container {
+    position: relative;
+  }
+
+  .moving-banner-content {
+    display: flex;
+    animation: scroll-left var(--speed, 20s) linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  .moving-banner-content:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<script define:vars={{ speed }}>
+  // Set animation speed dynamically
+  const banner = document.querySelector('.moving-banner-content');
+  if (banner) {
+    banner.style.setProperty('--speed', `${speed}s`);
+  }
+</script>

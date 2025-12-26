@@ -1,16 +1,146 @@
 ---
-
+import WithSidebar from '../layouts/WithSidebar.astro';
+import Tag from '../components/ui/Tag.astro';
+import SidebarCard from '../components/ui/SidebarCard.astro';
+import MainSection from '../components/ui/MainSection.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<style>
+  .jersey-20-charted-regular {
+    font-family: 'Jersey 20 Charted', serif;
+  }
+  .jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+</style>
+
+<WithSidebar>
+  <div class="min-h-screen">
+    <div class="container mx-auto py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <!-- Sidebar -->
+        <div slot="sidebar">
+          <!-- Quick Links -->
+          <SidebarCard 
+            title="Quick Links" 
+            class="ml-1"
+          >
+            <div class="space-y-2">
+              <a href="https://github.com/yourusername" class="block text-blue-600 hover:text-blue-800 transition-colors">
+                LinkedIn
+              </a>
+              <a href="mailto:hello@yourname.dev" class="block text-blue-600 hover:text-blue-800 transition-colors">
+                Email
+              </a>
+              <a href="#" class="block text-blue-600 hover:text-blue-800 transition-colors">
+                Resume
+              </a>
+            </div>
+          </SidebarCard>
+
+          <!-- Status Card -->
+          <SidebarCard 
+            title="Status" 
+            class="ml-1"
+          >
+            <p class="text-gray-600 mb-2">Currently interning at Wiresk Ltd.</p>
+          </SidebarCard>
+
+          <!-- Visitor Counter (Nostalgic!) -->
+          <SidebarCard 
+            title="Total Visits" 
+            class="text-center ml-1"
+          >
+            <div class="bg-black text-green-400 font-mono text-sm px-2 py-1">
+              0
+            </div>
+          </SidebarCard>
+        </div>
+
+        <!-- Main Content -->
+        <main class="lg:col-span-3 space-y-8">
+          
+          <!-- About Me Section -->
+          <MainSection title="About Me" >
+            <div class="prose prose-sm max-w-none text-gray-700">
+              <!-- Text with Picture Layout -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <!-- Profile Picture -->
+                <div class="md:col-span-1">
+                  <div class="w-full aspect-square bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg flex items-center justify-center border-2 border-black shadow-lg">
+                    <span class="text-white text-6xl font-bold">YN</span>
+                  </div>
+                </div>
+                
+                <!-- Text Content -->
+                <div class="md:col-span-2">
+                  <p class="mb-4">
+                    Welcome to my little corner of the internet! I'm a passionate web developer who loves 
+                    creating digital experiences that feel both modern and nostalgic. There's something 
+                    magical about the early days of the web that I try to capture in my work.
+                  </p>
+                  
+                  <p class="mb-4">
+                    When I'm not coding, you can find me exploring new coffee shops, taking photos of 
+                    interesting architecture, or diving deep into the latest web technologies. I believe 
+                    in building things that are not just functional, but delightful to use.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Full Width Content Below -->
+              <div class="bg-white border-l-4 border-1 border-black p-4 my-4">
+                <p class="text-sm italic">
+                  "This is an inspirational quote." - Me
+                </p>
+              </div>
+            </div>
+          </MainSection>
+
+          <!-- Latest Project Section -->
+          <MainSection 
+            title="Latest Project" 
+            icon="🚀" 
+          >
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <Tag size="sm">Astro</Tag>
+                  <Tag size="sm">React</Tag>
+                  <Tag size="sm">Node.js</Tag>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">GPU based falling sand game</h3>
+                <p class="text-gray-600 mb-4">
+                  A modern take on the classic personal website aesthetic. Built with Astro and 
+                  Tailwind CSS, it captures the nostalgic feel of early web while maintaining 
+                  modern functionality and accessibility.
+                </p>
+              </div>
+
+              <div class="bg-gradient-to-br aspect-square from-purple-100 to-pink-100 rounded-lg p-6 flex items-center justify-center border-2 border-dashed border-purple-300">
+                <div class="text-center text-gray-600">
+                  <div class="text-6xl mb-4">🌐</div>
+                  <p class="font-medium">Project Screenshot</p>
+                  <p class="text-sm">Coming soon...</p>
+                </div>
+              </div>
+            </div>
+
+          </MainSection>
+
+          <!-- More Projects Button -->
+          <div class="bg-white/80 backdrop-blur-sm border-2 border-black p-2 ml-1 text-center" style="box-shadow: -1px 1px 0px 0px black, -2px 2px 0px 0px black, -3px 3px 0px 0px black, -4px 4px 0px 0px black;">
+            <a href="/projects" class="block group">
+              <p class="text-md text-black">View all my work</p>
+            </a>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</WithSidebar>
+
+

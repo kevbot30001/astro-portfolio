@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MainSection from '../components/ui/MainSection.astro';
+---
+
+<BaseLayout title="Photography - Your Name" description="A small gallery of my photos">
+  <div class="min-h-screen">
+    <div class="container mx-auto py-8">
+      <main class="space-y-8">
+        <MainSection title="Photography" icon="📸">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="w-full aspect-video bg-gray-100 border-2 border-black rounded-sm flex items-center justify-center">Image 1</div>
+            <div class="w-full aspect-video bg-gray-100 border-2 border-black rounded-sm flex items-center justify-center">Image 2</div>
+            <div class="w-full aspect-video bg-gray-100 border-2 border-black rounded-sm flex items-center justify-center">Image 3</div>
+          </div>
+        </MainSection>
+      </main>
+    </div>
+  </div>
+</BaseLayout>

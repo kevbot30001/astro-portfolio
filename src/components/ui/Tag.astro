@@ -1,0 +1,36 @@
+---
+export interface Props {
+  variant?: 'default';
+  size?: 'sm' | 'md';
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  size = 'md',
+  class: className = ''
+} = Astro.props;
+
+const variantClasses = {
+  default: 'bg-blue-200 text-blue-500 border-blue-500 hover:bg-blue-300',
+};
+
+const sizeClasses = {
+  sm: 'px-1.5 py-0.5 text-sm',
+  md: 'px-3 py-1.5 text-sm'
+};
+
+const classes = `jersey-10-regular inline-block font-medium transition-colors border-r-2 duration-200 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+<style>
+  .jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+</style>
+
+<span class={classes}>
+  <slot />
+</span>

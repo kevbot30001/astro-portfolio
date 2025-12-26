@@ -1,0 +1,63 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  background?: 'gradient' | 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+  centered?: boolean;
+  class?: string;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  background = 'gradient',
+  size = 'lg',
+  centered = true,
+  class: className = ''
+} = Astro.props;
+
+const backgroundClasses = {
+  gradient: 'bg-gradient-to-br from-slate-50 to-gray-200',
+  dark: 'bg-gradient-to-br from-slate-800 to-slate-900 text-white',
+  light: 'bg-white'
+};
+
+const sizeClasses = {
+  sm: 'py-12',
+  md: 'py-16',
+  lg: 'py-20 lg:py-24'
+};
+
+const titleSizes = {
+  sm: 'text-3xl lg:text-4xl',
+  md: 'text-4xl lg:text-5xl',
+  lg: 'text-4xl lg:text-6xl'
+};
+---
+
+<section class={`${backgroundClasses[background]} ${sizeClasses[size]} ${className}`}>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class={`${centered ? 'text-center' : ''} max-w-4xl ${centered ? 'mx-auto' : ''}`}>
+      <h1 class={`${titleSizes[size]} font-bold tracking-tight mb-6 fade-in-up`}>
+        <slot name="title">{title}</slot>
+      </h1>
+      
+      {subtitle && (
+        <p class="text-xl lg:text-2xl text-gray-600 mb-6 fade-in-up" style="animation-delay: 0.2s">
+          <slot name="subtitle">{subtitle}</slot>
+        </p>
+      )}
+      
+      {description && (
+        <p class="text-lg text-gray-500 mb-8 leading-relaxed fade-in-up" style="animation-delay: 0.4s">
+          <slot name="description">{description}</slot>
+        </p>
+      )}
+      
+      <slot name="actions" />
+    </div>
+  </div>
+</section>

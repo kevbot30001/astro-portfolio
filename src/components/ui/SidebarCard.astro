@@ -1,0 +1,57 @@
+---
+// Sidebar card component with header that wraps content
+export interface Props {
+  title: string;
+  icon?: string;
+  bgColor?: string;
+  class?: string;
+  pulse?: boolean;
+  shadowSize?: number;
+}
+
+const { 
+  title, 
+  icon = "",
+  bgColor = "bg-white/80",
+  class: className = "",
+  pulse = false,
+  shadowSize = 4
+} = Astro.props;
+
+// Generate diagonal shadow layers based on shadowSize
+const shadowLayers = Array.from({ length: shadowSize }, (_, i) => {
+  const offset = i + 1;
+  return `-${offset}px ${offset}px 0px 0px black`;
+}).join(', ');
+---
+
+<style>
+.jersey-20-charted-regular {
+    font-family: 'Jersey 20 Charted', serif;
+}
+.jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+</style>
+
+<div 
+  class={`${bgColor} border-2 border-black p-3 pt-2 ${className}`} 
+  style={`box-shadow: ${shadowLayers};`}
+>
+  <h3 class="jersey-10-regular text-xl text-gray-800 flex items-center">
+    {title}
+  </h3>
+  <div class="card-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .card-content {
+    /* Content styling */
+    font-size: 0.75rem; /* text-xs */
+    line-height: 1.25;
+  }
+</style>

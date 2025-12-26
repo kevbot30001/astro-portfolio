@@ -1,0 +1,68 @@
+---
+// Main section component with header and body structure
+export interface Props {
+  title: string;
+  icon?: string;
+  bgColor?: string;
+  class?: string;
+}
+
+const { 
+  title, 
+  icon = "",
+  bgColor = "bg-white/90",
+  class: className = ""
+} = Astro.props;
+---
+
+<style>
+  .jersey-20-charted-regular {
+    font-family: 'Jersey 20 Charted', serif;
+  }
+  .jersey-10-regular {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .halftone-header {
+    position: relative;
+    background: white;
+    filter: contrast(50);
+  }
+  
+  .halftone-header::after {
+    content: '';
+    position: absolute;
+    inset: 0.2rem 0rem;
+    background-image: radial-gradient(
+      circle at center,
+      black 0.02rem,
+      transparent 0.2rem
+    );
+    background-size: 0.3rem 0.3rem;
+    background-repeat: round;
+    mask-image: linear-gradient(to left, rgb(0 0 0), rgb(0 0 0 / 0.5) 80%, rgb(0 0 0 / 0.5) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgb(0 0 0), rgb(0 0 0 / 0.5) 80%, rgb(0 0 0 / 0.5) 100%);
+  }
+</style>
+
+<div class={`${bgColor} backdrop-blur-sm rounded-lg ${className}`}>
+  <!-- Header -->
+  <header class="mb-8 pb-2 border-b-2 border-black">
+    <div class="halftone-header">
+        <h2 class="jersey-10-regular text-4xl font-bold text-gray-800">{title}</h2>
+    </div>
+  </header>
+  
+  <!-- Body -->
+  <div class="section-body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .section-body {
+    /* Ensure proper spacing for content */
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import WithSidebar from '../layouts/WithSidebar.astro';
+import SidebarCard from '../components/ui/SidebarCard.astro';
+import MainSection from '../components/ui/MainSection.astro';
+import Tag from '../components/ui/Tag.astro';
+---
+
+<WithSidebar>
+  <div class="min-h-screen">
+    <div class="container mx-auto py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <div slot="sidebar">
+          <SidebarCard title="Projects" class="ml-1">
+            <p class="text-sm text-gray-600">A selection of things I've worked on.</p>
+          </SidebarCard>
+
+          <SidebarCard title="Contact" class="ml-1">
+            <a href="mailto:hello@yourname.dev" class="text-blue-600 hover:underline">Email me</a>
+          </SidebarCard>
+        </div>
+
+        <main class="lg:col-span-3 space-y-8">
+          <MainSection title="Projects" icon="🧰">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Example Project Card -->
+              <div class="bg-white border-2 border-black p-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-20 h-20 bg-gray-100 rounded-md flex items-center justify-center border-2 border-black">🧩</div>
+                  <div>
+                    <h3 class="font-semibold">Falling Sand GPU</h3>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                      <Tag size="sm">WebGL</Tag>
+                      <Tag size="sm">GPU</Tag>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">A tiny physics sandbox rendered on the GPU.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </MainSection>
+        </main>
+      </div>
+    </div>
+  </div>
+</WithSidebar>
